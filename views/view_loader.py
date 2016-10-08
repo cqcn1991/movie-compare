@@ -33,9 +33,9 @@ def turn_scatter_into_interactive(fig, scatter_plot, df, file_name):
     movie_cards = [movie_template.render(movie=movie, show_ratings_num=True) for movie in movies]
     fig.set_size_inches(10,10)
     plugins.connect(fig, plugins.PointHTMLTooltip(scatter_plot, movie_cards, css=load_css()))
-    mpld3.save_html(fig, file_name)
+    mpld3.save_html(fig, './assets/interactive_plots/'+file_name)
     button = '''<a class='btn btn-default' style="text-decoration: none;;"
-    href="./{0}" target='_blank'>
+    href="./assets/interactive_plots/{0}" target='_blank'>
     Interactive Scatter Plot</a>
     '''.format(file_name)
     return HTML(button)
