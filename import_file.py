@@ -18,6 +18,7 @@ set_matplotlib_formats('png', 'pdf')
 from lib.lib_loader import *
 from views.view_loader import *
 from helpers.plot_print_helper import *
+from helpers.application_helper import *
 
 # Custom Import
 import json

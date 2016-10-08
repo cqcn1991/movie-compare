@@ -1,0 +1,3 @@
+{% for movie in movies %}
+    {{movie_template.render(movie=movie, show_ratings_num=show_ratings_num )}}
+{% endfor %}

@@ -1,5 +1,6 @@
 from .shared_imports import *
 
+
 def plt_configure(ax=None, xlabel=None, ylabel=None, title='', legend=False, tight=False, figsize=False, no_axis=False):
     if ax == None :
         ax=plt.gca()

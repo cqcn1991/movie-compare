@@ -1,7 +1,48 @@
 from IPython.display import display, HTML, Javascript
+import sass
+import mpld3
 
-def load_assets():
-    lib_files = """
-        <link rel="stylesheet" type="text/css" href='./views/application.css' media="screen" />
-        """
-    return HTML(lib_files)
+
+def load_css():
+    with open('./assets/application.css.scss', 'r') as myfile:
+        sass_raw = myfile.read().replace('\n', '')
+        css = sass.compile(string=sass_raw)
+    css = "<style media='screen' type='text/css'>" + css + '</style>'
+    return css
+
+
+def movie_list(df):
+    movies = df.to_dict(orient='records')
+    if len(movies) >= 30:
+        movies = movies[:30]
+    from jinja2 import Template, Environment, FileSystemLoader
+    env = Environment(loader=FileSystemLoader('./views'))
+    movie_template = env.get_template('movie.jinjia')
+    movie_list_template = env.get_template('movie_list.jinjia')
+    movie_list_content = movie_list_template.render(movies=movies, movie_template=movie_template)
+    css = load_css()
+    return HTML(css+ movie_list_content)
+
+
+def turn_scatter_into_interactive(fig, scatter_plot, df, file_name):
+    from jinja2 import Template, Environment, FileSystemLoader
+    from mpld3 import plugins
+    env = Environment(loader=FileSystemLoader('./views'))
+    movie_template = env.get_template('movie.jinjia')
+    movies = df.to_dict(orient='records')
+    movie_cards = [movie_template.render(movie=movie, show_ratings_num=True) for movie in movies]
+    fig.set_size_inches(10,10)
+    plugins.connect(fig, plugins.PointHTMLTooltip(scatter_plot, movie_cards, css=load_css()))
+    mpld3.save_html(fig, file_name)
+    button = '''<a class='btn btn-default' style="text-decoration: none;;"
+    href="./{0}" target='_blank'>
+    Interactive Scatter Plot</a>
+    '''.format(file_name)
+    return HTML(button)
+
+
+# def movie_index():
+#     movie_index_template = env.get_template('movie_index.jinjia')
+#     output_from_parsed_template = movie_index_template.render(movie_list_content=movie_list_content, css=css)
+#     with open("movie_index.html", "wb") as fh:
+#         fh.write(output_from_parsed_template)

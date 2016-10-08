@@ -3,3 +3,4 @@ jsmin
 joblib
 mpld3
 libsass
+Jinja2

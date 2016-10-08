@@ -1,0 +1,37 @@
+{% macro imdb_url(movie) -%}
+    {{ 'http://www.imdb.com/title/' + movie['movie_tt_id']}}
+{%- endmacro %}
+
+{% macro ratings_num(ratings_number) -%}
+    {% if ratings_number/1000 >= 1 %}
+        {{ ratings_number//1000 ~ ' K'  }}
+    {% else %}
+        {{ ratings_number|int }}
+    {% endif %}
+{%- endmacro %}
+
+
+<div class='thumbnail movie-thumbnail'>
+    <a href='{{ imdb_url(movie) }}' target='_blank'>
+        <div class='caption'>
+            <img class="movie-poster" src={{movie['image_url']}}>
+            <span class='title'>{{movie['name']}}</span>
+            <p>
+                <a class='btn btn-default btn-rating' href='{{movie['douban_url']}}' target='_blank'>
+                    <img class="site-icon" src='./assets/douban.ico'>
+                    {{movie['db_rating']}}
+                    {% if show_ratings_num is defined %}
+                        ({{ratings_num(movie['db_ratings_count'])}})
+                    {% endif %}
+                </a>
+                <a class='btn btn-default btn-rating' href='{{ imdb_url(movie) }}' target='_blank'>
+                    <img class="site-icon" src='./assets/imdb.ico'>
+                    {{movie['imdb_rating']}}
+                    {% if show_ratings_num is defined %}
+                        ({{ratings_num(movie['imdb_ratings_count'])}})
+                    {% endif %}
+                </a>
+            </p>
+        </div>
+    </a>
+</div>
