@@ -30,3 +30,10 @@
 
 3. `movie_compare.pptx` 为介绍时所用的PPT
 
+## Contact 
+
+如果有任何问题，可以发issue，或者[在这里](https://www.douban.com/people/wohaobeia/)找我
+
+
+
+
