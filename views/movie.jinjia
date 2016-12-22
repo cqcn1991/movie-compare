@@ -15,7 +15,7 @@
     <a href='{{ imdb_url(movie) }}' target='_blank'>
         <div class='caption'>
             <img class="movie-poster" src={{movie['image_url']}}>
-            <span class='title'>{{movie['name']}}</span>
+            <span class='title' title="{{movie['name']}}">{{movie['name']}}</span>
             <p>
                 <a class='btn btn-default btn-rating' href='{{movie['douban_url']}}' target='_blank'>
                     <img class="site-icon" src='./assets/douban.ico'>

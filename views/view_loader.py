@@ -3,11 +3,12 @@ import sass
 import mpld3
 
 
-def load_css():
+def load_css(raw=False):
     with open('./assets/application.css.scss', 'r') as myfile:
         sass_raw = myfile.read().replace('\n', '')
         css = sass.compile(string=sass_raw)
-    css = "<style media='screen' type='text/css'>" + css + '</style>'
+    if not raw:
+        css = "<style media='screen' type='text/css'>" + css + '</style>'
     return css
 
 
@@ -27,17 +28,19 @@ def movie_list(df):
 def turn_scatter_into_interactive(fig, scatter_plot, df, file_name):
     from jinja2 import Template, Environment, FileSystemLoader
     from mpld3 import plugins
+    # file_path = './assets/interactive_plots/'+file_name
+    file_path = './'+file_name
     env = Environment(loader=FileSystemLoader('./views'))
     movie_template = env.get_template('movie.jinjia')
     movies = df.to_dict(orient='records')
     movie_cards = [movie_template.render(movie=movie, show_ratings_num=True) for movie in movies]
     fig.set_size_inches(10,10)
-    plugins.connect(fig, plugins.PointHTMLTooltip(scatter_plot, movie_cards, css=load_css()))
-    mpld3.save_html(fig, './assets/interactive_plots/'+file_name)
+    plugins.connect(fig, plugins.PointHTMLTooltip(scatter_plot, movie_cards, css=load_css(raw=True)))
+    mpld3.save_html(fig, file_path)
     button = '''<a class='btn btn-default' style="text-decoration: none;;"
-    href="./assets/interactive_plots/{0}" target='_blank'>
+    href="{0}" target='_blank'>
     Interactive Scatter Plot</a>
-    '''.format(file_name)
+    '''.format(file_path)
     return HTML(button)
 
 

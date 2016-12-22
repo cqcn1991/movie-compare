@@ -22,6 +22,8 @@
 
 ## Getting Started
 
+0. 本项目基于Python 3，建议使用Anaconda安装
+
 1. 安装若干packages
 
     pip install -r requirements.txt

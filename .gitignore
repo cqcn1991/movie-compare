@@ -2,9 +2,8 @@
 *.xlsx
 *.xlsm
 *.csv
-data/*
-Playground.ipynb
-Variable Inspector.ipynb
+.ipynb_checkpoints/
+playground.ipynb
 
 .DS_Store
 .idea/

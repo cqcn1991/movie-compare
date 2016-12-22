@@ -1,5 +1,5 @@
 from .shared_imports import *
-from plot_print_helper import plt_configure
+from .plot_print_helper import plt_configure
 
 
 def plot_movie_scatter_comparison(df, title=''):
