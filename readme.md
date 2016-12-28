@@ -2,7 +2,7 @@
 
 ## 项目介绍
 
-平时，总能看到一些电影。虽然评分很高，但是却并不好看，比如
+平时，总能看到一些电影。虽然评分很高，但却并不好看，比如
 
 ![](./docs/example_movie.png)
 
@@ -14,13 +14,21 @@
 
 是不是有一种可能，因为这些电影很文艺、很小资，所以豆瓣的用户很喜欢，所以打了高分呢？
 
-换言之，是不是他们在装逼呢.... 本项目就是一次探索
+换言之，是不是他们在装逼呢.... 这里的数据分析就是一次探索。
 
-## 具体内容
+### 数据概况
 
 选取了2010-2014 北美上映的电影，比较豆瓣和IMDB评分，看看两者是不是存在很大的差别。
 
-## Getting Started
+### 结果
+
+![](./docs/scatter.png)
+
+[Interactive data visualization](https://cdn.rawgit.com/cqcn1991/movie-compare/master/movie_compare_all.html)
+
+## 代码介绍
+
+### Getting Started
 
 0. 本项目基于Python 3，建议使用Anaconda安装
 
