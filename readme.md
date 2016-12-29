@@ -24,7 +24,9 @@
 
 ![](./docs/scatter.png)
 
-[Interactive data visualization](https://cdn.rawgit.com/cqcn1991/movie-compare/master/movie_compare_all.html)
+[交互式评分比较散点图](https://cdn.rawgit.com/cqcn1991/movie-compare/master/movie_compare_all.html)
+
+完整的分析notebook, 见[这里](http://nbviewer.jupyter.org/github/cqcn1991/movie-compare/blob/master/application.ipynb)
 
 ## 代码介绍
 

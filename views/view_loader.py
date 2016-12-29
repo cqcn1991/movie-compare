@@ -14,8 +14,8 @@ def load_css(raw=False):
 
 def movie_list(df):
     movies = df.to_dict(orient='records')
-    if len(movies) >= 30:
-        movies = movies[:30]
+    if len(movies) >= 12:
+        movies = movies[:12]
     from jinja2 import Template, Environment, FileSystemLoader
     env = Environment(loader=FileSystemLoader('./views'))
     movie_template = env.get_template('movie.jinjia')
