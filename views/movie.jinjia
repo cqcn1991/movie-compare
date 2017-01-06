@@ -21,14 +21,22 @@
                     <img class="site-icon" src='./assets/douban.ico'>
                     {{movie['db_rating']}}
                     {% if show_ratings_num is defined %}
-                        ({{ratings_num(movie['db_ratings_count'])}})
+                        ({{ratings_num(movie['db_ratings_count'])}}
+                        {% if movie['db_rank'] is defined %}
+                            , {{ movie['db_rank']//1 }}
+                        {% endif %}
+                        )
                     {% endif %}
                 </a>
                 <a class='btn btn-default btn-rating' href='{{ imdb_url(movie) }}' target='_blank'>
                     <img class="site-icon" src='./assets/imdb.ico'>
                     {{movie['imdb_rating']}}
                     {% if show_ratings_num is defined %}
-                        ({{ratings_num(movie['imdb_ratings_count'])}})
+                        ({{ratings_num(movie['imdb_ratings_count'])}}
+                        {% if movie['imdb_rank'] is defined %}
+                            , {{ movie['imdb_rank']//1 }}
+                        {% endif %}
+                        )
                     {% endif %}
                 </a>
             </p>
