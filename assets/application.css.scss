@@ -1,14 +1,20 @@
 .movie-thumbnail{
   display: inline-block;
   margin-right: 20px;
+  width: 165px;
+  /*
   width: 200px;
+  */
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 2px;
   padding: 4px;
   .caption{
     color: #000;
+    /*
     padding: 9px;
+    */
+    padding: 7px;
   }
   .title{
     display: block;
@@ -28,7 +34,8 @@
     display: inline-block;
   }
   img.movie-poster {
-    max-height: 275px;
+    /*max-height: 275px;*/
+    max-width: 135px;
   }
   *:link{
     text-decoration: none;
@@ -45,4 +52,16 @@
 
 svg.mpld3-figure{
   min-height: 1200px;
+}
+.mpld3-tooltip{
+  .movie-thumbnail{
+     width: 180px;
+      .caption{
+        padding: 9px;
+      }
+      img.movie-poster {
+        max-width: 160px;
+        /*max-height: 240px;*/
+      }
+  }
 }

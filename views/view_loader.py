@@ -25,7 +25,7 @@ def movie_list(df):
     return HTML(css+ movie_list_content)
 
 
-def turn_scatter_into_interactive(fig, scatter_plot, df, file_name):
+def turn_scatter_into_interactive(fig, scatter_plot, df, file_name, figsize=False):
     from jinja2 import Template, Environment, FileSystemLoader
     from mpld3 import plugins
     # file_path = './assets/interactive_plots/'+file_name
@@ -34,7 +34,10 @@ def turn_scatter_into_interactive(fig, scatter_plot, df, file_name):
     movie_template = env.get_template('movie.jinjia')
     movies = df.to_dict(orient='records')
     movie_cards = [movie_template.render(movie=movie, show_ratings_num=True) for movie in movies]
-    fig.set_size_inches(10,10)
+    if figsize:
+        fig.set_size_inches(figsize)
+    else:
+        fig.set_size_inches(10, 10)
     plugins.connect(fig, plugins.PointHTMLTooltip(scatter_plot, movie_cards, css=load_css(raw=True)))
     mpld3.save_html(fig, file_path)
     button = '''<a class='btn btn-default' style="text-decoration: none;;"

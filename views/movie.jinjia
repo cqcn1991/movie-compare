@@ -4,7 +4,7 @@
 
 {% macro ratings_num(ratings_number) -%}
     {% if ratings_number/1000 >= 1 %}
-        {{ ratings_number//1000 ~ ' K'  }}
+        {{ ratings_number//1000|int }} K
     {% else %}
         {{ ratings_number|int }}
     {% endif %}
@@ -21,22 +21,20 @@
                     <img class="site-icon" src='./assets/douban.ico'>
                     {{movie['db_rating']}}
                     {% if show_ratings_num is defined %}
-                        ({{ratings_num(movie['db_ratings_count'])}}
                         {% if movie['db_rank'] is defined %}
-                            , {{ movie['db_rank']//1 }}
+                        , {{ movie['db_rank']|int }}%
                         {% endif %}
-                        )
+                        ({{ratings_num(movie['db_ratings_count'])}})
                     {% endif %}
                 </a>
                 <a class='btn btn-default btn-rating' href='{{ imdb_url(movie) }}' target='_blank'>
                     <img class="site-icon" src='./assets/imdb.ico'>
                     {{movie['imdb_rating']}}
                     {% if show_ratings_num is defined %}
-                        ({{ratings_num(movie['imdb_ratings_count'])}}
                         {% if movie['imdb_rank'] is defined %}
-                            , {{ movie['imdb_rank']//1 }}
+                        , {{ movie['imdb_rank']|int }}%
                         {% endif %}
-                        )
+                        ({{ratings_num(movie['imdb_ratings_count'])}})
                     {% endif %}
                 </a>
             </p>
