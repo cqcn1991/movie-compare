@@ -2,6 +2,13 @@ from .shared_imports import *
 from .plot_print_helper import plt_configure
 
 
+def set_chinese_font():
+    mpl.rcParams['font.sans-serif'] = ['SimHei']
+    mpl.rcParams['font.serif'] = ['SimHei']
+    mpl.rcParams['axes.unicode_minus'] = False
+    sns.set_style({"font.sans-serif": ['simhei', 'Arial']})
+
+
 def plot_movie_scatter_comparison(df, title='', type='rank', legend=True, regression=True):
     fig, ax = plt.subplots()
     # 1. plot scatter

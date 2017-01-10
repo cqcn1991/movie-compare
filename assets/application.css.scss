@@ -2,18 +2,12 @@
   display: inline-block;
   margin-right: 20px;
   width: 165px;
-  /*
-  width: 200px;
-  */
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 2px;
   padding: 4px;
   .caption{
     color: #000;
-    /*
-    padding: 9px;
-    */
     padding: 7px;
   }
   .title{
@@ -34,16 +28,20 @@
     display: inline-block;
   }
   img.movie-poster {
-    /*max-height: 275px;*/
     max-width: 135px;
   }
   *:link{
+    color: #333;
     text-decoration: none;
   }
 }
 
 .output_wrapper .btn-rating{
   display: inline-block;
+  text-align: center;
+  border: 1px solid  #ccc;;
+  border-radius: 2px;
+  padding: 6px 12px;
 }
 
 .btn-rating{

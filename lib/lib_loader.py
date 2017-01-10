@@ -61,7 +61,6 @@ def save_notebook():
                    include=['application/javascript'])
 
 
-
 def load_libs():
     display(toggle_cell())
     display(sidebar())

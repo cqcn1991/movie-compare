@@ -1,4 +1,4 @@
-# 豆瓣网友装X吗？（电影篇）
+# 豆瓣和IMDB电影评分比较
 
 ## 项目介绍
 
@@ -12,17 +12,15 @@
 
 可以看到，国内豆瓣的评分是8.3，而国外IMDB仅仅为7.3。烂番茄，Metacritic的评分也不高
 
-是不是有一种可能，因为这些电影很文艺、很小资，所以豆瓣的用户很喜欢，所以打了高分呢？
-
-换言之，是不是他们在装逼呢.... 这里的数据分析就是一次探索。
+是不是有一种可能，因为这些电影很文艺、很小资，所以豆瓣的用户很喜欢，所以打了高分呢？ .... 这里的数据分析就是一次探索。
 
 ### 数据概况
 
-选取了2010-2014 北美上映的电影，比较豆瓣和IMDB评分，看看两者是不是存在很大的差别。
+选取了2008-2014 北美上映的电影，比较豆瓣和IMDB评分，看看两者是不是存在很大的差别。
 
 ### 结果
 
-![](./docs/scatter.png)
+![](./docs/scatter_demo.gif)
 
 [交互式评分比较散点图](https://cdn.rawgit.com/cqcn1991/movie-compare/master/movie_compare_all.html)
 
@@ -38,7 +36,7 @@
 
     pip install -r requirements.txt
 
-2. 数据具体分析，在`movie_compar.ipynb`中
+2. 数据具体分析，在`application.ipynb`中
 
 3. `movie_compare.pptx` 为介绍时所用的PPT
 

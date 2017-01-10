@@ -3,8 +3,6 @@
 *.xlsm
 *.csv
 .ipynb_checkpoints/
-article.md
-article2.md
 
 .DS_Store
 .idea/

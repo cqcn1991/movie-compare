@@ -37,7 +37,7 @@ def turn_scatter_into_interactive(fig, scatter_plot, df, file_name, figsize=Fals
     if figsize:
         fig.set_size_inches(figsize)
     else:
-        fig.set_size_inches(10, 10)
+        fig.set_size_inches(8.5, 8.5)
     plugins.connect(fig, plugins.PointHTMLTooltip(scatter_plot, movie_cards, css=load_css(raw=True)))
     mpld3.save_html(fig, file_path)
     button = '''<a class='btn btn-default' style="text-decoration: none;;"
