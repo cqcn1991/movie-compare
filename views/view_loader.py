@@ -12,10 +12,9 @@ def load_css(raw=False):
     return css
 
 
-def movie_list(df):
+def movie_list(df, len=12):
     movies = df.to_dict(orient='records')
-    if len(movies) >= 12:
-        movies = movies[:12]
+    movies = movies[:len]
     from jinja2 import Template, Environment, FileSystemLoader
     env = Environment(loader=FileSystemLoader('./views'))
     movie_template = env.get_template('movie.jinjia')
@@ -25,7 +24,7 @@ def movie_list(df):
     return HTML(css+ movie_list_content)
 
 
-def turn_scatter_into_interactive(fig, scatter_plot, df, file_name, figsize=False):
+def turn_scatter_into_interactive(fig, scatter_plot, df, file_name, show_ratings_num=True, figsize=False):
     from jinja2 import Template, Environment, FileSystemLoader
     from mpld3 import plugins
     # file_path = './assets/interactive_plots/'+file_name
@@ -33,7 +32,7 @@ def turn_scatter_into_interactive(fig, scatter_plot, df, file_name, figsize=Fals
     env = Environment(loader=FileSystemLoader('./views'))
     movie_template = env.get_template('movie.jinjia')
     movies = df.to_dict(orient='records')
-    movie_cards = [movie_template.render(movie=movie, show_ratings_num=True) for movie in movies]
+    movie_cards = [movie_template.render(movie=movie, show_ratings_num=show_ratings_num) for movie in movies]
     if figsize:
         fig.set_size_inches(figsize)
     else:

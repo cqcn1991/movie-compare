@@ -3,10 +3,12 @@
 {%- endmacro %}
 
 {% macro ratings_num(ratings_number) -%}
-    {% if ratings_number/1000 >= 1 %}
-        {{ ratings_number//1000|int }} K
-    {% else %}
-        {{ ratings_number|int }}
+    {% if show_ratings_num == True %}
+        {% if ratings_number/1000 >= 1 %}
+            {{ ratings_number//1000|int }} K
+        {% else %}
+            {{ ratings_number|int }}
+        {% endif %}
     {% endif %}
 {%- endmacro %}
 
@@ -20,22 +22,27 @@
                 <a class='btn-rating' href='{{movie['douban_url']}}' target='_blank'>
                     <img class="site-icon" src='./assets/douban.ico'>
                     {{movie['db_rating']}}
-                    {% if show_ratings_num is defined %}
+                    {% if show_ratings_num == True %}
                         {% if movie['db_rank'] is defined %}
                         , {{ movie['db_rank']|int }}%
                         {% endif %}
                         ({{ratings_num(movie['db_ratings_count'])}})
                     {% endif %}
                 </a>
+                {% if movie['std'] is defined  %}
+                    <span>{{ movie['std']|round(2) }}</span>
+                {% endif %}
+                {% if movie['imdb_rating'] is defined %}
                 <a class='btn-rating' href='{{ imdb_url(movie) }}' target='_blank'>
                     <img class="site-icon" src='./assets/imdb.ico'>
                     {{movie['imdb_rating']}}
-                    {% if show_ratings_num is defined %}
+                    {% if show_ratings_num == True %}
                         {% if movie['imdb_rank'] is defined %}
                         , {{ movie['imdb_rank']|int }}%
                         {% endif %}
                         ({{ratings_num(movie['imdb_ratings_count'])}})
                     {% endif %}
+                {% endif %}
                 </a>
             </div>
         </div>
