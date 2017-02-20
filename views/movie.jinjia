@@ -30,7 +30,10 @@
                     {% endif %}
                 </a>
                 {% if movie['std'] is defined  %}
-                    <span>{{ movie['std']|round(2) }}</span>
+                    <span class="label label-primary" title="std">{{ movie['std']|round(2) }}</span>
+                    {% if movie['cluster'] is defined  %}
+                        <span class="label label-info" title="cluster">{{movie['cluster']}}</span>
+                    {% endif %}
                 {% endif %}
                 {% if movie['imdb_rating'] is defined %}
                 <a class='btn-rating' href='{{ imdb_url(movie) }}' target='_blank'>
