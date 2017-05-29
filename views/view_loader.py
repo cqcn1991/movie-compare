@@ -24,16 +24,16 @@ def movie_list(df, len=12):
     return HTML(css+ movie_list_content)
 
 
-def turn_scatter_into_interactive(fig, scatter_plot, df, file_name, show_ratings_num=True, figsize=False, click=False):
+def turn_scatter_into_interactive(fig, scatter_plot, df, file_name, show_ratings_num=True, figsize=False, click=False, show_distribution=False):
     from jinja2 import Template, Environment, FileSystemLoader
     from mpld3 import plugins
     from helpers.application_helper import PointClickableHTMLTooltip2
     # file_path = './assets/interactive_plots/'+file_name
-    file_path = './'+file_name
+    file_path = file_name
     env = Environment(loader=FileSystemLoader('./views'))
     movie_template = env.get_template('movie.jinjia')
     movies = df.to_dict(orient='records')
-    movie_cards = [movie_template.render(movie=movie, show_ratings_num=show_ratings_num) for movie in movies]
+    movie_cards = [movie_template.render(movie=movie, show_ratings_num=show_ratings_num, show_distribution=show_distribution) for movie in movies]
     if figsize:
         fig.set_size_inches(figsize)
     else:

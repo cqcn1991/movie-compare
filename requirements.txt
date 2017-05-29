@@ -4,3 +4,4 @@ joblib
 mpld3
 libsass
 Jinja2
+scrapy

@@ -12,10 +12,14 @@
     {% endif %}
 {%- endmacro %}
 
+{% macro to_percent(rating_float) -%}
+    {{ "{:.1%}".format(rating_float) }}
+{%- endmacro %}
+
 
 <div class='thumbnail movie-thumbnail'>
     <a href='{{ imdb_url(movie) }}' target='_blank'>
-        <div class='caption'>
+        <div class='caption movie-info'>
             <img class="movie-poster" src={{movie['image_url']}}>
             <span class='title' title="{{movie['name']}}">{{movie['name']}}</span>
             <div>
@@ -49,5 +53,16 @@
                 </a>
             </div>
         </div>
+        {% if show_distribution is defined  %}
+            <div class="distribution">
+            {% for rating in [movie['5_star'], movie['4_star'], movie['3_star'], movie['2_star'], movie['1_star']] %}
+                <div class="item">
+                    <div class="power" style="width:{{ to_percent(rating) }}"></div>
+                    <span class="rating_per">{{ to_percent(rating) }}</span>
+                    <br>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
     </a>
 </div>

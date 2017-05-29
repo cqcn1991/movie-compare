@@ -1,7 +1,6 @@
 .movie-thumbnail{
   display: inline-block;
   margin-right: 20px;
-  width: 165px;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 2px;
@@ -51,15 +50,35 @@
 svg.mpld3-figure{
   min-height: 1200px;
 }
-.mpld3-tooltip{
+
+.output_result{
   .movie-thumbnail{
+      width: 165px;
+  }
+}
+
+.mpld3-tooltip{
+  .movie-info{
      width: 180px;
+     display: inline-block;
+     float: left;
       .caption{
         padding: 9px;
       }
       img.movie-poster {
         max-width: 160px;
-        /*max-height: 240px;*/
       }
   }
+  .distribution{
+     padding: 9px;
+     width: 180px;
+     display: inline-block;
+  }
+}
+
+.distribution .power {
+    height: 10px;
+    float: left;
+    margin: 1px 4px;
+    background: #ffd596 none repeat scroll 0 0;
 }
