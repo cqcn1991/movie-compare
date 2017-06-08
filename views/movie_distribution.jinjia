@@ -1,0 +1,23 @@
+{% macro to_percent(rating_float) -%}
+    {{ "{:.1%}".format(rating_float) }}
+{%- endmacro %}
+
+<div class='movie-distribution-thumbnail clearfix'>
+    <a href='{{movie['douban_url']}}' target='_blank'>
+        <img class="movie-poster" src={{movie['image_url']}}>
+   </a>
+    <div class="movie-info">
+        <span class='title' title="{{movie['name']}}">{{movie['name']}} </span>
+        <div>
+            <img class="site-icon" src='./assets/douban.ico'>  {{movie['db_rating']}}
+        </div>
+        <div class="distribution">
+        {% for rating in [movie['5_star'], movie['4_star'], movie['3_star'], movie['2_star'], movie['1_star']] %}
+            <div class="item">
+                <div class="power" style="width:{{ to_percent(rating) }}"></div>
+                <span class="rating_per">{{ to_percent(rating) }}</span>
+            </div>
+        {% endfor %}
+        </div>
+   </div>
+</div>

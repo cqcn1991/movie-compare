@@ -53,16 +53,5 @@
                 </a>
             </div>
         </div>
-        {% if show_distribution is defined  %}
-            <div class="distribution">
-            {% for rating in [movie['5_star'], movie['4_star'], movie['3_star'], movie['2_star'], movie['1_star']] %}
-                <div class="item">
-                    <div class="power" style="width:{{ to_percent(rating) }}"></div>
-                    <span class="rating_per">{{ to_percent(rating) }}</span>
-                    <br>
-                </div>
-            {% endfor %}
-        </div>
-        {% endif %}
     </a>
 </div>

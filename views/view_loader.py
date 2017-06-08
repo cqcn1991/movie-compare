@@ -12,12 +12,24 @@ def load_css(raw=False):
     return css
 
 
-def movie_list(df, len=12):
+def movie_list(df, len=12, show_distribution=False):
     movies = df.to_dict(orient='records')
     movies = movies[:len]
-    from jinja2 import Template, Environment, FileSystemLoader
+    from jinja2 import Environment, FileSystemLoader
     env = Environment(loader=FileSystemLoader('./views'))
     movie_template = env.get_template('movie.jinjia')
+    movie_list_template = env.get_template('movie_list.jinjia')
+    movie_list_content = movie_list_template.render(movies=movies, movie_template=movie_template)
+    css = load_css()
+    return HTML(css+ movie_list_content)
+
+
+def movie_list2(df, len=12, show_distribution=False):
+    movies = df.to_dict(orient='records')
+    movies = movies[:len]
+    from jinja2 import Environment, FileSystemLoader
+    env = Environment(loader=FileSystemLoader('./views'))
+    movie_template = env.get_template('movie_distribution.jinjia')
     movie_list_template = env.get_template('movie_list.jinjia')
     movie_list_content = movie_list_template.render(movies=movies, movie_template=movie_template)
     css = load_css()
@@ -31,9 +43,12 @@ def turn_scatter_into_interactive(fig, scatter_plot, df, file_name, show_ratings
     # file_path = './assets/interactive_plots/'+file_name
     file_path = file_name
     env = Environment(loader=FileSystemLoader('./views'))
-    movie_template = env.get_template('movie.jinjia')
     movies = df.to_dict(orient='records')
-    movie_cards = [movie_template.render(movie=movie, show_ratings_num=show_ratings_num, show_distribution=show_distribution) for movie in movies]
+    if show_distribution:
+        movie_template = env.get_template('movie_distribution.jinjia')
+    else:
+        movie_template = env.get_template('movie.jinjia')
+    movie_cards = [movie_template.render(movie=movie, show_ratings_num=show_ratings_num) for movie in movies]
     if figsize:
         fig.set_size_inches(figsize)
     else:

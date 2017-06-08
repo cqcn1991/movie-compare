@@ -51,7 +51,7 @@ svg.mpld3-figure{
   min-height: 1200px;
 }
 
-.output_result{
+.output_html{
   .movie-thumbnail{
       width: 165px;
   }
@@ -59,7 +59,7 @@ svg.mpld3-figure{
 
 .mpld3-tooltip{
   .movie-info{
-     width: 180px;
+     width: 180px !important;
      display: inline-block;
      float: left;
       .caption{
@@ -69,16 +69,66 @@ svg.mpld3-figure{
         max-width: 160px;
       }
   }
-  .distribution{
-     padding: 9px;
-     width: 180px;
-     display: inline-block;
+  .movie-distribution-thumbnail{
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 10px;
+      img.movie-poster {
+        width: 125px !important;
+      }
   }
 }
 
-.distribution .power {
+
+.movie-distribution-thumbnail{
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  .title{
+    display: block;
+    font-size:14px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .movie-info{
+    display: inline-block;
+    width: 120px;
+  }
+  img.movie-poster {
+    width: 95px;
+    float: left;
+    margin-right: 10px !important;
+  }
+  .site-icon{
+    margin-top: -1px;
+    height: 16px;
+    display: inline-block;
+  }
+  .distribution{
+    margin-top: 10px;
+  }
+}
+
+.distribution{
+  .item{
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .power {
     height: 10px;
     float: left;
-    margin: 1px 4px;
+    margin-top: 1px;
+    margin-right: 4px;
     background: #ffd596 none repeat scroll 0 0;
+  }
+  .rating_per{
+    color: #9b9b9b;
+    font-size: 11px;
+    line-height: 14px;
+  }
 }
