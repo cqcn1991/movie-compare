@@ -53,8 +53,6 @@ def turn_scatter_into_interactive(fig, scatter_plot, df, file_name, show_ratings
         fig.set_size_inches(figsize)
     else:
         fig.set_size_inches(8.5, 8.5)
-    # plugins.connect(fig, plugins.PointHTMLTooltip(scatter_plot, movie_cards, css=load_css(raw=True)))
-    # targets = ["http://example.com/#%d" % i for i in range(len(df))]
     if click:
         plugins.connect(fig, PointClickableHTMLTooltip2(scatter_plot, labels=movie_cards, targets=df['douban_url'].tolist(), css=load_css(raw=True)))
     else:
