@@ -132,3 +132,16 @@ svg.mpld3-figure{
     line-height: 14px;
   }
 }
+
+.custom-thumbnail{
+  display: inline-block;
+  margin-right: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  padding: 10px;
+}
+
+.right{
+  float: right;
+}
